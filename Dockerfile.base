@@ -1,0 +1,12 @@
+# Base image for deployment
+FROM golang:alpine
+
+# Configure Go
+ENV GOROOT /usr/lib/go
+ENV GOPATH /opt/demo
+ENV PATH /opt/demo/bin:$PATH
+
+# Make directory 
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+#CMD ["./main"]
+

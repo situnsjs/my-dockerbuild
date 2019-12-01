@@ -1,0 +1,14 @@
+version: '2'
+
+# Define services
+services:
+    # Test Service
+    demo:
+     # Configuration for building Test server docker image
+      build:
+        context: . # Use an image built from the specified dockerfile in the current directory.
+        dockerfile: Dockerfile
+        args:      # Define Env variable for your service and pass it as argument
+        - port=${PORT}             # Configurable port picked from .env file located in the same directory
+      ports:
+        - 8000:${PORT} # Exposed port ${PORT} on the container to port 8080 on the host machine
