@@ -1,12 +1,12 @@
 node{
-   
+   def app
    stage(" Code Checkout"){
       echo 'App build started..'
       git credentialsId: 'githubID', url: 'https://github.com/situnsjs/my-dockerbuild.git'
       }
    
    stage('Docker Build') {
-     def app = docker.build "situnsjs/go-docker"
+     app = docker.build "situnsjs/go-docker"
     }
    
    stage("Tag & Push image"){
