@@ -2,18 +2,18 @@ node{
    
    stage(" Code Checkout"){
       echo 'App build started..'
-      git credentialsId: 'githubID', url: 'https://github.com/itrainjaquar/python-docker-app-openshifts.git'
+      git credentialsId: 'githubID', url: 'https://github.com/situnsjs/my-dockerbuild.git'
       }
    
    stage('Docker Build') {
-     def app = docker.build "manee2k6/itrain-padman-py-app"
+     def app = docker.build "situnsjs/go-docker"
     }
    
    stage("Tag & Push image"){
       withDockerRegistry([credentialsId: 'dockerID',url: ""]) {
-          sh 'docker tag manee2k6/itrain-padman-py-app manee2k6/itrain-padman-py-app:dev'
-          sh 'docker push manee2k6/itrain-padman-py-app:dev'
-          sh 'docker push manee2k6/itrain-padman-py-app:latest'
+          sh 'docker tag situnsjs/go-docker situnsjs/go-docker:dev'
+          sh 'docker push situnsjs/go-docker:dev'
+          sh 'docker push situnsjs/go-docker:latest'
       }
     }
     stage("App deployment started"){
